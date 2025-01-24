@@ -24,7 +24,7 @@ app.get("/health", (req, res) => {
 });
 
 app.post('/send-email', async(req, res) => {
-    const {to, subject, name} = req.body;
+    const {to, subject, name, message} = req.body;
 
     if(!to || !subject ||!name){
         return res.status(400).json({
@@ -38,7 +38,7 @@ app.post('/send-email', async(req, res) => {
 
         const template = Handlebars.compile(templateContent);
 
-        const htmlContent = template({name});
+        const htmlContent = template({name, message});
 
         const transporter = nodemailer.createTransport({
             service: "gmail",
