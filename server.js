@@ -38,7 +38,11 @@ app.post('/send-email', async(req, res) => {
 
         const template = Handlebars.compile(templateContent);
 
+        console.log("Message" , message);
+        
+        
         const htmlContent = template({name, message});
+        console.log("Message 2 " , message);
 
         const transporter = nodemailer.createTransport({
             service: "gmail",
