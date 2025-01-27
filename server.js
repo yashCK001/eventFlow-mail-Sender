@@ -33,16 +33,22 @@ app.post("/send-email", async (req, res) => {
       error: "All fields are required",
     });
   }
-
   try {
+
     // this will generate the qr code for the email
     // we need to add this in the template of html : {{QRCodeURL}}
 
     const email = to;
     const qrCodeDirectory = 'qrcodes'
     const qrCodeFilePath = `${qrCodeDirectory}/${email}.png`;
+
+    //qr code content which will have the email, and the fields 
+    const qrCodeContent = JSON.stringify({
+      EMAIL: email,
+      DATA: data
+    });
     
-    await QRcode.toFile(qrCodeFilePath, to);
+    await QRcode.toFile(qrCodeFilePath, qrCodeContent);
 
     if(!fs.existsSync(qrCodeDirectory)) fs.mkdirSync(qrCodeDirectory, {recursive: true});
 
@@ -51,11 +57,8 @@ app.post("/send-email", async (req, res) => {
     });
 
     //url will be in the result.secure_url
-
     const QRCodeURL = uploadResult.secure_url;
-
     // const QRCodeURL = await QRcode.toDataURL(to); => no need for generting base64 string from image
-
     fs.unlinkSync(qrCodeFilePath);
 
     const templateContent = fs.readFileSync("emailTemplate.html", "utf-8");
