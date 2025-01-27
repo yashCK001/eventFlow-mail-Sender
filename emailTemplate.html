@@ -5,64 +5,252 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EventFlow Inc Email</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap');
+
     body {
-      font-family: Consolas, sans-serif;
+      font-family: 'Fira Code', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
+      padding: 20px;
+      background-color: #f0f4f8;
+      background-image: 
+        radial-gradient(circle at 100% 100%, #e2e8f0 0%, transparent 50%),
+        radial-gradient(circle at 0% 0%, #e2e8f0 0%, transparent 50%);
     }
+
     .email-container {
       max-width: 600px;
-      margin: auto;
+      margin: 20px auto;
       background-color: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
       overflow: hidden;
+      box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
+
     .header {
-      background: linear-gradient(to left, #38bdf8, #fb7185, #84cc16);
-      color: #ffffff;
+      background: linear-gradient(135deg, #2563eb, #4f46e5, #7c3aed);
+      color: #3ebecf;
+      font-family: 'Fira Code';
       text-align: center;
       padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
     }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 150%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% -50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    }
+
     .header h1 {
-      font-size: 28px;
+      font-family: 'Fire Code', serif;
+      font-size: 36px;
       margin: 0;
+      letter-spacing: -0.5px;
+      position: relative;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
     .content {
-      padding: 20px;
-      color: #333333;
+      padding: 32px 40px;
+      color: #1f2937;
+      line-height: 1.7;
+      font-size: 16px;
+      background: linear-gradient(to bottom, #ffffff, #f8fafc);
     }
-    .footer {
-      text-align: center;
-      padding: 10px;
-      font-size: 12px;
-      color: #666666;
-      background-color: #f1f1f1;
+
+    .content p {
+      margin: 0 0 px;
     }
-    img {
-      max-width: 100%;
-      height: auto;
+
+    .qr-code {
       display: block;
-      margin: 20px auto;
+      width: 200px;
+      height: 200px;
+      margin: 32px auto;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 8px;
+      background: white;
+    }
+
+    .signature {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #e5e7eb;
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .signature strong {
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #2563eb, #4f46e5, #7c3aed);
+      color: #ffffff;
+      padding: 5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 150%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% -50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    }
+
+    .footer-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .footer-section {
+      text-align: center;
+    }
+
+    .footer-section h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 12px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-section p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .social-link {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      transition: background-color 0.2s;
+    }
+
+    .social-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px;
+      }
+      
+      .content {
+        padding: 24px 20px;
+      }
+      
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .footer-content {
+        gap: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="email-container">
     <div class="header">
-      <h1>EventFlow Inc</h1>
+      <h1>EventFlow Inc.</h1>
     </div>
     <div class="content">
-      <p>Hello, {{name}} </p>
-      <br>
+      <p>Hello {{name}},</p>
       <p>{{message}}</p>
       <p>Your QR code is below:</p>
-            <img src="{{QRCodeURL}}" alt="Description of Image">
-            <p>Best regards,<br>Ashraf Chauhan<br>Founder, CEO<br>EventFlow Inc</p>
-    </div> 
+      <img src="{{QRCodeURL}}" alt="QR Code" class="qr-code">
+      <div class="signature">
+        Best regards,<br>
+        <strong>Ashraf Chauhan</strong><br>
+        Founder & CEO<br>
+        EventFlow Inc.
+      </div>
+    </div>
     <div class="footer">
-      <p>© 2025 EventFlow Inc. All rights reserved.</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <p>CoderKube Technologies<br>Nanpura, Surat<br>
+          Email: contact@eventflow.com<br>
+          Phone: +91 966696669</p>
+        </div>
+        <div class="footer-section">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="https://twitter.com/" class="social-link" title="Twitter">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/" class="social-link" title="LinkedIn">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+            <a href="https://facebook.com/" class="social-link" title="Facebook">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/" class="social-link" title="Instagram">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="copyright">
+          © 2025 EventFlow Inc. All rights reserved.
+        </div>
+      </div>
     </div>
   </div>
 </body>
