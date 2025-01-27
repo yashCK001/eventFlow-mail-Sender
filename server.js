@@ -43,10 +43,10 @@ app.post("/send-email", async (req, res) => {
     const qrCodeFilePath = `${qrCodeDirectory}/${email}.png`;
 
     //qr code content which will have the email, and the fields 
-    const qrCodeContent = JSON.stringify({
+    const qrCodeContent = {
       EMAIL: email,
       DATA: data
-    });
+    };
     
     await QRcode.toFile(qrCodeFilePath, qrCodeContent);
 
