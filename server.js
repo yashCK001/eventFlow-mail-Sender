@@ -38,8 +38,13 @@ app.post("/send-email", async (req, res) => {
     // this will generate the qr code for the email
     // we need to add this in the template of html : {{QRCodeURL}}
 
-    const qrCodeFilePath = `./qrCodes/${to}.png`;
+    const email = to;
+    const qrCodeDirectory = 'qrcodes'
+    const qrCodeFilePath = `${qrCodeDirectory}/${email}.png`;
+    
     await QRcode.toFile(qrCodeFilePath, to);
+
+    if(!fs.existsSync(qrCodeDirectory)) fs.mkdirSync(qrCodeDirectory, {recursive: true});
 
     const uploadResult = await cloudinary.uploader.upload(qrCodeFilePath, {
       folder: "qrCodes",
@@ -51,7 +56,7 @@ app.post("/send-email", async (req, res) => {
 
     // const QRCodeURL = await QRcode.toDataURL(to); => no need for generting base64 string from image
 
-    // fs.unlinkSync(qrCodeFilePath);
+    fs.unlinkSync(qrCodeFilePath);
 
     const templateContent = fs.readFileSync("emailTemplate.html", "utf-8");
     const template = Handlebars.compile(templateContent);
