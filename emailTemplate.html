@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventFlow Inc Email</title>
   <style>
     body {
       font-family: Consolas, sans-serif;
@@ -17,8 +20,8 @@
       overflow: hidden;
     }
     .header {
-background: linear-gradient(to left, #38bdf8, #fb7185, #84cc16);      color: #ffffff;
-      
+      background: linear-gradient(to left, #38bdf8, #fb7185, #84cc16);
+      color: #ffffff;
       text-align: center;
       padding: 40px 20px;
     }
@@ -37,6 +40,12 @@ background: linear-gradient(to left, #38bdf8, #fb7185, #84cc16);      color: #ff
       color: #666666;
       background-color: #f1f1f1;
     }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
   </style>
 </head>
 <body>
@@ -45,10 +54,14 @@ background: linear-gradient(to left, #38bdf8, #fb7185, #84cc16);      color: #ff
       <h1>EventFlow Inc</h1>
     </div>
     <div class="content">
-      <p>Hello, {{name}}</p>
+      <p>Hello, {{name}} </p>
+      <br>
+      <h6>{{QRCodeURL}}</h6>
       <p>{{message}}</p>
-      <p>Best regards,<br>Ashraf Chauhan<br>Founder, CEO<br>EventFlow Inc</p>
-    </div>
+      <p>Your QR code is below:</p>
+            <img src="{{QRCodeURL}}" alt="Description of Image">
+            <p>Best regards,<br>Ashraf Chauhan<br>Founder, CEO<br>EventFlow Inc</p>
+    </div> 
     <div class="footer">
       <p>© 2025 EventFlow Inc. All rights reserved.</p>
     </div>
