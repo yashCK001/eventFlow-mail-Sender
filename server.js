@@ -51,7 +51,7 @@ app.post("/send-email", async (req, res) => {
 
     // const QRCodeURL = await QRcode.toDataURL(to); => no need for generting base64 string from image
 
-    fs.unlinkSync(qrCodeFilePath);
+    // fs.unlinkSync(qrCodeFilePath);
 
     const templateContent = fs.readFileSync("emailTemplate.html", "utf-8");
     const template = Handlebars.compile(templateContent);
