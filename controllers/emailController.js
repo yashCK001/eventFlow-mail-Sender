@@ -8,10 +8,9 @@ export const sendEmailController = async (req, res) => {
       error: "All fields are required",
     });
   }
-
   try {
     const qrCodeUrl = await sendEmail(to, subject, name, message, data);
-
+    console.log('QR code url', qrCodeUrl);
     res.status(200).json({
       message: `Email sent to ${to}`,
       qrcodeUrl: qrCodeUrl,
