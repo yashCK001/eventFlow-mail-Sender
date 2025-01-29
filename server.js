@@ -53,6 +53,14 @@ app.use((req, res) => {
  });
 });
 
+app.use(express.static('public', {  
+  setHeaders: (res, path) => {  
+    if (path.endsWith('.js')) {  
+      res.setHeader('Content-Type', 'application/javascript');  
+    }  
+  }  
+}));
+
 app.listen(PORT, () => {
  console.log(`Server started at localhost:${PORT}`);
 });
