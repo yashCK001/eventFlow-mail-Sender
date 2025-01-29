@@ -23,5 +23,5 @@ export const generateQRCode = async (email, data) => {
 
   fs.unlinkSync(qrCodeFilePath);
 
-  return uploadResult.secure_url;
+  return uploadResult.secure_url; // provides the clpoudinary url -> where the image has been stored
 };
