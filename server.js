@@ -16,10 +16,19 @@ app.use(express.json());
 //     // optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
 
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+  origin: "*", // OR use a specific origin like "http://localhost:5173"
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: "Content-Type, Authorization"
+}));
+
+/* 
 app.options('/*', (_, res) => {
   res.sendStatus(200);
 });
+*/
 
 app.use(rateLimit({
  windowMs: 15 * 60 * 1000,
