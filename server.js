@@ -17,6 +17,9 @@ app.use(express.json());
 // };
 
 app.use(cors());
+app.options('/*', (_, res) => {
+  res.sendStatus(200);
+});
 
 app.use(rateLimit({
  windowMs: 15 * 60 * 1000,
