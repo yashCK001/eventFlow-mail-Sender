@@ -12,14 +12,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 const corsOptions = {
- origin: [
-   "https://eventflowpro.netlify.app", 
-   "http://localhost:5173"
- ],
- methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
- allowedHeaders: ["Content-Type", "Authorization"],
- credentials: true,
- optionsSuccessStatus: 200,
+    origin: '*',
+    // optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 app.use(cors(corsOptions));
@@ -36,7 +30,7 @@ app.get("/health", (req, res) => {
  });
 });
 
-app.use("/", emailRoutes);
+app.use("/", emailRoutes);  
 
 app.use((err, req, res, next) => {
  console.error(err.stack);
